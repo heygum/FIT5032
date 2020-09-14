@@ -101,8 +101,8 @@ C:\Users\CJ\Source\Repos\FIT5032_MyAssignment\FIT5032_MyAssignment\bin\Microsoft
 C:\Users\CJ\Source\Repos\FIT5032_MyAssignment\FIT5032_MyAssignment\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\Users\CJ\Source\Repos\FIT5032_MyAssignment\FIT5032_MyAssignment\bin\Microsoft.Owin.Security.OAuth.xml
 C:\Users\CJ\Source\Repos\FIT5032_MyAssignment\FIT5032_MyAssignment\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\CJ\Source\Repos\FIT5032_MyAssignment\FIT5032_MyAssignment\obj\Debug\FIT5032_MyAssignment.csprojAssemblyReference.cache
 C:\Users\CJ\Source\Repos\FIT5032_MyAssignment\FIT5032_MyAssignment\obj\Debug\FIT5032_MyAssignment.csproj.CoreCompileInputs.cache
 C:\Users\CJ\Source\Repos\FIT5032_MyAssignment\FIT5032_MyAssignment\obj\Debug\FIT5032_MyAssignment.csproj.CopyComplete
 C:\Users\CJ\Source\Repos\FIT5032_MyAssignment\FIT5032_MyAssignment\obj\Debug\FIT5032_MyAssignment.dll
 C:\Users\CJ\Source\Repos\FIT5032_MyAssignment\FIT5032_MyAssignment\obj\Debug\FIT5032_MyAssignment.pdb
+C:\Users\CJ\Source\Repos\FIT5032_MyAssignment\FIT5032_MyAssignment\obj\Debug\FIT5032_MyAssignment.csprojAssemblyReference.cache

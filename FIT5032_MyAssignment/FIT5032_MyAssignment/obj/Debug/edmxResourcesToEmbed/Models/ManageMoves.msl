@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ManageMovesStoreContainer" CdmEntityContainer="ManageMovesContainer">
+    <EntitySetMapping Name="Movements">
+      <EntityTypeMapping TypeName="IsTypeOf(ManageMoves.Movements)">
+        <MappingFragment StoreEntitySet="Movements">
+          <ScalarProperty Name="MovementID" ColumnName="MovementID" />
+          <ScalarProperty Name="MovementName" ColumnName="MovementName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
