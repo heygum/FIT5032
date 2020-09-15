@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -55,6 +56,10 @@ namespace FIT5032_MyAssignment.Controllers
         {
             if (vali())
             {
+              
+                List<String> _list = new List<String>();
+
+                ViewBag.data = _list.AsEnumerable();
                 return View();
             }        
             return RedirectToActionPermanent("Login", "Account");

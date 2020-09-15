@@ -58,6 +58,7 @@ namespace FIT5032_MyAssignment
                 RequireDigit = true,
                 RequireLowercase = true,
                 RequireUppercase = true,
+               
             };
 
             // Configure user lockout defaults

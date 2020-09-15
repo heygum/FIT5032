@@ -106,3 +106,5 @@ C:\Users\CJ\Source\Repos\FIT5032_MyAssignment\FIT5032_MyAssignment\obj\Debug\FIT
 C:\Users\CJ\Source\Repos\FIT5032_MyAssignment\FIT5032_MyAssignment\obj\Debug\FIT5032_MyAssignment.dll
 C:\Users\CJ\Source\Repos\FIT5032_MyAssignment\FIT5032_MyAssignment\obj\Debug\FIT5032_MyAssignment.pdb
 C:\Users\CJ\Source\Repos\FIT5032_MyAssignment\FIT5032_MyAssignment\obj\Debug\FIT5032_MyAssignment.csprojAssemblyReference.cache
+C:\Users\CJ\Source\Repos\FIT5032_MyAssignment\FIT5032_MyAssignment\bin\System.Web.Providers.dll
+C:\Users\CJ\Source\Repos\FIT5032_MyAssignment\FIT5032_MyAssignment\bin\System.Web.Providers.xml

@@ -11,7 +11,8 @@ namespace FIT5032_MyAssignment.Models
 {
     using System;
     using System.Collections.Generic;
-    
+
+
     public partial class Movements
     {
         public int MovementID { get; set; }

@@ -1,5 +1,6 @@
 ﻿@model IEnumerable<FIT5032_MyAssignment.Models.Moves>
 
+
 @{
     ViewBag.Title = "My Exercise";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -27,26 +28,27 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.MoveName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Times)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Rounds)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Date)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.MoveID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.MoveID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.MoveID })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MoveName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Times)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rounds)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.MoveID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.MoveID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.MoveID })
+            </td>
+        </tr>
+    }
 
 </table>

@@ -7,6 +7,7 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
+
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -19,12 +20,14 @@
                 </button>
                 @Html.ActionLink("Living Like a Boxer", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
+
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                     <li>@Html.ActionLink("My Exercise", "Index", "Moves")</li>
+                    <li>@Html.ActionLink("Manage Moves", "Index", "Movements")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
@@ -37,9 +40,15 @@
             <p>&copy; @DateTime.Now.Year -Living Like a Boxer</p>
         </footer>
     </div>
-
+    <system.web>
+        <authentication mode="None" />
+        <compilation debug="true" targetFramework="4.5" />
+        <httpRuntime targetFramework="4.5" />
+        <roleManager enabled="true" />
+    </system.web>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+
     @RenderSection("scripts", required: false)
 </body>
 </html>

@@ -1,7 +1,9 @@
 ﻿using System.Data.Entity;
+using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
+using System.Web;
 using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace FIT5032_MyAssignment.Models
