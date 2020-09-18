@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Moves" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+  <EntityContainer Name="MovesContainer" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Movements" EntityType="Moves.Movements" />
+    <EntitySet Name="MovePlans" EntityType="Moves.MovePlans" />
+  </EntityContainer>
+  <EntityType Name="Movements">
+    <Key>
+      <PropertyRef Name="MovementId" />
+    </Key>
+    <Property Name="MovementId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MovementName" Type="String" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MovePlans">
+    <Key>
+      <PropertyRef Name="PlanId" />
+    </Key>
+    <Property Name="PlanId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MoveName" Type="String" Nullable="false" />
+    <Property Name="Time" Type="Int16" Nullable="false" />
+    <Property Name="Round" Type="Int16" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Nullable="false" />
+  </EntityType>
+</Schema>
