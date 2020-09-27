@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MovesStoreContainer" CdmEntityContainer="MovesContainer">
+    <EntitySetMapping Name="Movements">
+      <EntityTypeMapping TypeName="IsTypeOf(Moves.Movements)">
+        <MappingFragment StoreEntitySet="Movements">
+          <ScalarProperty Name="MovementId" ColumnName="MovementId" />
+          <ScalarProperty Name="MovementName" ColumnName="MovementName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MovePlans">
+      <EntityTypeMapping TypeName="IsTypeOf(Moves.MovePlans)">
+        <MappingFragment StoreEntitySet="MovePlans">
+          <ScalarProperty Name="PlanId" ColumnName="PlanId" />
+          <ScalarProperty Name="MoveName" ColumnName="MoveName" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="Round" ColumnName="Round" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

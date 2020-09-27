@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Moves.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="MovesStoreContainer">
+    <EntitySet Name="Movements" EntityType="Moves.Store.Movements" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MovePlans" EntityType="Moves.Store.MovePlans" store:Type="Tables" Schema="dbo" />
+  </EntityContainer>
+  <EntityType Name="Movements">
+    <Key>
+      <PropertyRef Name="MovementId" />
+    </Key>
+    <Property Name="MovementId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MovementName" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MovePlans">
+    <Key>
+      <PropertyRef Name="PlanId" />
+    </Key>
+    <Property Name="PlanId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MoveName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Time" Type="smallint" Nullable="false" />
+    <Property Name="Round" Type="smallint" Nullable="false" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+    <Property Name="UserID" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Moves" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="MovesContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Movements" EntityType="Moves.Movements" />
+          <EntitySet Name="MovePlans" EntityType="Moves.MovePlans" />
+        </EntityContainer>
+        <EntityType Name="Movements">
+          <Key>
+            <PropertyRef Name="MovementId" />
+          </Key>
+          <Property Name="MovementId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MovementName" Type="String" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MovePlans">
+          <Key>
+            <PropertyRef Name="PlanId" />
+          </Key>
+          <Property Name="PlanId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MoveName" Type="String" Nullable="false" />
+          <Property Name="Time" Type="Int16" Nullable="false" />
+          <Property Name="Round" Type="Int16" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" />
+          <Property Name="UserID" Type="String" Nullable="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MovesStoreContainer" CdmEntityContainer="MovesContainer">
+    <EntitySetMapping Name="Movements">
+      <EntityTypeMapping TypeName="IsTypeOf(Moves.Movements)">
+        <MappingFragment StoreEntitySet="Movements">
+          <ScalarProperty Name="MovementId" ColumnName="MovementId" />
+          <ScalarProperty Name="MovementName" ColumnName="MovementName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MovePlans">
+      <EntityTypeMapping TypeName="IsTypeOf(Moves.MovePlans)">
+        <MappingFragment StoreEntitySet="MovePlans">
+          <ScalarProperty Name="PlanId" ColumnName="PlanId" />
+          <ScalarProperty Name="MoveName" ColumnName="MoveName" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="Round" ColumnName="Round" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
