@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using FIT5032_AssignmentX.Models;
 using Microsoft.AspNet.Identity;
+using PagedList;
 
 namespace FIT5032_AssignmentX.Controllers
 {
@@ -17,9 +18,71 @@ namespace FIT5032_AssignmentX.Controllers
         private MovesContainer db = new MovesContainer();
 
         // GET: MovePlans
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
-            return View(db.MovePlans.ToList());
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
+            ViewBag.RoundSortParm = sortOrder == "Round" ? "round_desc" : "Round";
+            ViewBag.TImeSortParm = sortOrder == "Time" ? "time_desc" : "Time";
+            ViewBag.UserIDSortParm = sortOrder == "UserID" ? "userid_desc" : "UserID";
+
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+            var UserID = User.Identity.GetUserId();
+            var moves = from s in db.MovePlans where s.UserID == UserID select s;
+            if (User.IsInRole("admin"))
+            { 
+                moves = from s in db.MovePlans select s; 
+            }
+            
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                moves = moves.Where(s => s.MoveName.Contains(searchString));
+            }
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    moves = moves.OrderByDescending(s => s.MoveName);
+                    break;
+                case "Date":
+                    moves = moves.OrderBy(s => s.Date);
+                    break;
+                case "date_desc":
+                    moves = moves.OrderByDescending(s => s.Date);
+                    break;
+                case "Round":
+                    moves = moves.OrderBy(s => s.Round);
+                    break;
+                case "round_desc":
+                    moves = moves.OrderByDescending(s => s.Round);
+                    break;
+                case "Time":
+                    moves = moves.OrderBy(s => s.Time);
+                    break;
+                case "time_desc":
+                    moves = moves.OrderByDescending(s => s.Time);
+                    break;
+                case "UserID":
+                    moves = moves.OrderBy(s => s.UserID);
+                    break;
+                case "userid_desc":
+                    moves = moves.OrderByDescending(s => s.UserID);
+                    break;
+                default:
+                    moves = moves.OrderBy(s => s.MoveName);
+                    break;
+            }
+            int pageSize = 10;
+            int pageNumber = (page ?? 1);
+            return View(moves.ToPagedList(pageNumber, pageSize));
         }
 
         // GET: MovePlans/Details/5

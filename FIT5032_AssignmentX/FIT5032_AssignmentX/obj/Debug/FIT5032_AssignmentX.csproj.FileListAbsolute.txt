@@ -108,3 +108,7 @@ C:\Users\CJ\Source\Repos\FIT5032_AssignmentX\FIT5032_AssignmentX\obj\Debug\FIT50
 C:\Users\CJ\Source\Repos\FIT5032_AssignmentX\FIT5032_AssignmentX\obj\Debug\FIT5032_AssignmentX.csprojAssemblyReference.cache
 C:\Users\CJ\Source\Repos\FIT5032_AssignmentX\FIT5032_AssignmentX\bin\System.Web.Providers.dll
 C:\Users\CJ\Source\Repos\FIT5032_AssignmentX\FIT5032_AssignmentX\bin\System.Web.Providers.xml
+C:\Users\CJ\Source\Repos\FIT5032_AssignmentX\FIT5032_AssignmentX\bin\PagedList.dll
+C:\Users\CJ\Source\Repos\FIT5032_AssignmentX\FIT5032_AssignmentX\bin\PagedList.Mvc.dll
+C:\Users\CJ\Source\Repos\FIT5032_AssignmentX\FIT5032_AssignmentX\bin\PagedList.xml
+C:\Users\CJ\Source\Repos\FIT5032_AssignmentX\FIT5032_AssignmentX\bin\PagedList.Mvc.xml

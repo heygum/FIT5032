@@ -9,6 +9,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using FIT5032_AssignmentX.Models;
+using PagedList;
 
 namespace FIT5032_AssignmentX.Controllers
 {
@@ -18,9 +19,40 @@ namespace FIT5032_AssignmentX.Controllers
         private MovesContainer db = new MovesContainer();
 
         // GET: Movements
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
-            return View(db.Movements.ToList());
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name" : "";
+
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+
+            var movements = from s in db.Movements select s;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                movements = movements.Where(s => s.MovementName.Contains(searchString));
+            }
+            switch (sortOrder)
+            {
+                case "name":
+                    movements = movements.OrderBy(s => s.MovementName);
+                    break;
+                default:
+                    movements = movements.OrderByDescending(s => s.MovementName);
+                    break;
+            }
+
+            int pageSize = 10;
+            int pageNumber = (page ?? 1);
+            return View(movements.ToPagedList(pageNumber, pageSize));
         }
 
         // GET: Movements/Details/5
