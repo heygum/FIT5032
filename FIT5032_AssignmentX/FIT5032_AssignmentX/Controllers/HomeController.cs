@@ -26,5 +26,20 @@ namespace FIT5032_AssignmentX.Controllers
 
             return View();
         }
+
+        public ActionResult Plan()
+        {
+            ViewBag.Message = "Your plan page.";
+
+            return View();
+        }
+
+        [Authorize (Roles ="admin")]
+        public ActionResult Manage()
+        {
+            ViewBag.Message = "Your management page.";
+
+            return View();
+        }
     }
 }

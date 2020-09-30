@@ -26,11 +26,11 @@
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                     @if (User.IsInRole("user") || User.IsInRole("admin"))
                     {
-                        <li>@Html.ActionLink("My calender", "Index", "MovePlans")</li>
+                        <li>@Html.ActionLink("My calender", "Plan", "Home")</li>
                     }
                     @if (User.IsInRole("admin"))
                     {
-                        <li>@Html.ActionLink("Manage Movement", "Index", "Movements")</li>
+                        <li>@Html.ActionLink("Manage", "Manage", "Home")</li>
                     }
                 </ul>
                 @Html.Partial("_LoginPartial")

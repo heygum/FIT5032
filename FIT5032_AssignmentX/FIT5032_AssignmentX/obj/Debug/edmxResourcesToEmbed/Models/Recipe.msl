@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="RecipeStoreContainer" CdmEntityContainer="RecipeContainer">
+    <EntitySetMapping Name="Recipes">
+      <EntityTypeMapping TypeName="IsTypeOf(Recipe.Recipes)">
+        <MappingFragment StoreEntitySet="Recipes">
+          <ScalarProperty Name="RecipeID" ColumnName="RecipeID" />
+          <ScalarProperty Name="RecipeName" ColumnName="RecipeName" />
+          <ScalarProperty Name="Calorie" ColumnName="Calorie" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RecipePlans">
+      <EntityTypeMapping TypeName="IsTypeOf(Recipe.RecipePlans)">
+        <MappingFragment StoreEntitySet="RecipePlans">
+          <ScalarProperty Name="PlanID" ColumnName="PlanID" />
+          <ScalarProperty Name="ReciName" ColumnName="ReciName" />
+          <ScalarProperty Name="Calorie" ColumnName="Calorie" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
