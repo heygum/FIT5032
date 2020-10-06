@@ -135,6 +135,8 @@ namespace FIT5032_AssignmentX.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "PlanID,ReciName,Calorie,Quantity,Date,UserID")] RecipePlans recipePlans)
         {
+            var recipes = (from a in db.Recipes orderby a.RecipeName select a).ToList();
+            ViewBag.reci = ToSelectList(recipes);
             if (ModelState.IsValid)
             {
                 recipePlans.UserID = User.Identity.GetUserId();

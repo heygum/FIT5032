@@ -180,6 +180,8 @@ namespace FIT5032_AssignmentX.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "PlanId,MoveName,Time,Round,Date,UserID")] MovePlans movePlans)
         {
+            var lstskill = (from a in db.Movements orderby a.MovementName select a).ToList();
+            ViewBag.move = ToSelectList(lstskill);
             if (ModelState.IsValid)
             {
                 db.Entry(movePlans).State = EntityState.Modified;
