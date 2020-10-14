@@ -11,13 +11,15 @@ namespace FIT5032_AssignmentX.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class RecipePlans
     {
         public int PlanID { get; set; }
         public string ReciName { get; set; }
         public double Calorie { get; set; }
         public short Quantity { get; set; }
+        [DisplayFormat(DataFormatString = "{0:dd/MMMM/yyyy}")]
         public System.DateTime Date { get; set; }
         public string UserID { get; set; }
     }

@@ -264,7 +264,9 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="img\background.jpg" />
+    <Content Include="img\small1-320w.jpg" />
     <Content Include="img\small1.jpg" />
+    <Content Include="img\small2-320w.jpg" />
     <Content Include="img\small2.jpg" />
     <Content Include="Models\Moves.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

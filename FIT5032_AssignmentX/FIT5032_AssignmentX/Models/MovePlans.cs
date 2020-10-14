@@ -11,13 +11,15 @@ namespace FIT5032_AssignmentX.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class MovePlans
     {
         public int PlanId { get; set; }
         public string MoveName { get; set; }
         public short Time { get; set; }
         public short Round { get; set; }
+        [DisplayFormat(DataFormatString = "{0:dd/MMMM/yyyy}")]
         public System.DateTime Date { get; set; }
         public string UserID { get; set; }
     }
