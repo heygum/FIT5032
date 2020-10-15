@@ -112,3 +112,7 @@ C:\Users\CJ\Source\Repos\FIT5032_AssignmentX\FIT5032_AssignmentX\bin\PagedList.d
 C:\Users\CJ\Source\Repos\FIT5032_AssignmentX\FIT5032_AssignmentX\bin\PagedList.Mvc.dll
 C:\Users\CJ\Source\Repos\FIT5032_AssignmentX\FIT5032_AssignmentX\bin\PagedList.xml
 C:\Users\CJ\Source\Repos\FIT5032_AssignmentX\FIT5032_AssignmentX\bin\PagedList.Mvc.xml
+C:\Users\CJ\Source\Repos\FIT5032_AssignmentX\FIT5032_AssignmentX\bin\SendGrid.dll
+C:\Users\CJ\Source\Repos\FIT5032_AssignmentX\FIT5032_AssignmentX\bin\StarkbankEcdsa.dll
+C:\Users\CJ\Source\Repos\FIT5032_AssignmentX\FIT5032_AssignmentX\bin\SendGrid.pdb
+C:\Users\CJ\Source\Repos\FIT5032_AssignmentX\FIT5032_AssignmentX\bin\SendGrid.xml

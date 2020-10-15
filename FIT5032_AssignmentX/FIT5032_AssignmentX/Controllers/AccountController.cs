@@ -14,6 +14,7 @@ using System.Web.Security;
 namespace FIT5032_AssignmentX.Controllers
 {
     [Authorize]
+
     public class AccountController : Controller
     {
         private ApplicationSignInManager _signInManager;

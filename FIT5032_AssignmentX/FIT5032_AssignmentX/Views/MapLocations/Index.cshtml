@@ -1,0 +1,68 @@
+﻿@model IEnumerable<FIT5032_AssignmentX.Models.MapLocation>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <h2>Map</h2>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+
+    <div class="col-md-6">
+
+        <div id='map' style='width: 800px; height: 400px;'></div>
+        <script>
+            mapboxgl.accessToken = 'pk.eyJ1Ijoia3h1dTAwMjUiLCJhIjoiY2tnOHY3MG1hMDBpbTJ0czJ0MWpuOXU1ayJ9.VVM65g0hQ_-XUP6KGqAu4A';
+            var map = new mapboxgl.Map({
+                container: 'map',
+                style: 'mapbox://styles/mapbox/streets-v11',
+                center: [145.029731, -37.886599],
+                zoom: 10
+            });
+        </script>
+    </div>
+            
+            <table class="table">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.LocationName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.longitude)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Latitude)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Description)
+                    </th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.LocationName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.longitude)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Latitude)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Description)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.LocationId }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.LocationId }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.LocationId })
+                        </td>
+                    </tr>
+                }
+
+            </table>
+

@@ -52,6 +52,12 @@
     <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
       <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
     </Reference>
+    <Reference Include="SendGrid, Version=9.21.0.0, Culture=neutral, PublicKeyToken=4f047e93159395ca, processorArchitecture=MSIL">
+      <HintPath>..\packages\SendGrid.9.21.0\lib\net452\SendGrid.dll</HintPath>
+    </Reference>
+    <Reference Include="StarkbankEcdsa, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\starkbank-ecdsa.1.2.0\lib\net452\StarkbankEcdsa.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -66,6 +72,7 @@
     <Reference Include="System.Web.Providers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Providers.Core.2.0.0\lib\net40\System.Web.Providers.dll</HintPath>
     </Reference>
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
@@ -181,10 +188,12 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MapLocationsController.cs" />
     <Compile Include="Controllers\MovementsController.cs" />
     <Compile Include="Controllers\MovePlansController.cs" />
     <Compile Include="Controllers\RecipePlansController.cs" />
     <Compile Include="Controllers\RecipesController.cs" />
+    <Compile Include="Controllers\SendEmail.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -192,6 +201,24 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Map.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Map.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Map.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Map.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Map.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Map.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MapLocation.cs">
+      <DependentUpon>Map.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Movements.cs">
       <DependentUpon>Moves.tt</DependentUpon>
     </Compile>
@@ -268,6 +295,17 @@
     <Content Include="img\small1.jpg" />
     <Content Include="img\small2-320w.jpg" />
     <Content Include="img\small2.jpg" />
+    <Content Include="Models\Map.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Map.Context.cs</LastGenOutput>
+      <DependentUpon>Map.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\Map.edmx.sql" />
+    <Content Include="Models\Map.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Map.cs</LastGenOutput>
+      <DependentUpon>Map.edmx</DependentUpon>
+    </Content>
     <Content Include="Models\Moves.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Moves.Context.cs</LastGenOutput>
@@ -311,6 +349,13 @@
     </EntityDeploy>
     <Content Include="Models\Recipe.edmx.diagram">
       <DependentUpon>Recipe.edmx</DependentUpon>
+    </Content>
+    <EntityDeploy Include="Models\Map.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Map.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Map.edmx.diagram">
+      <DependentUpon>Map.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -462,6 +507,13 @@
     <Content Include="Views\RecipePlans\Edit.cshtml" />
     <Content Include="Views\RecipePlans\Index.cshtml" />
     <Content Include="Views\Home\Plan.cshtml" />
+    <Content Include="Views\MapLocations\Create.cshtml" />
+    <Content Include="Views\MapLocations\Delete.cshtml" />
+    <Content Include="Views\MapLocations\Details.cshtml" />
+    <Content Include="Views\MapLocations\Edit.cshtml" />
+    <Content Include="Views\MapLocations\Index.cshtml" />
+    <Content Include="Views\MovePlans\Report.cshtml" />
+    <Content Include="Views\MovePlans\SendEmail.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

@@ -12,6 +12,7 @@ using PagedList;
 
 namespace FIT5032_AssignmentX.Controllers
 {
+    [ValidateInput(false)]
     public class RecipePlansController : Controller
     {
         private RecipeContainer db = new RecipeContainer();

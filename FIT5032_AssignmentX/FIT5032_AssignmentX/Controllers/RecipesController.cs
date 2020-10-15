@@ -12,6 +12,7 @@ using PagedList;
 namespace FIT5032_AssignmentX.Controllers
 {
     [Authorize(Roles = "admin")]
+    [ValidateInput(false)]
     public class RecipesController : Controller
     {
         private RecipeContainer db = new RecipeContainer();

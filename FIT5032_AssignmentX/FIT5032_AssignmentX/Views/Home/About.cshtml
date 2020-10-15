@@ -4,4 +4,13 @@
 <h2>@ViewBag.Title.</h2>
 <h3>@ViewBag.Message</h3>
 
-<p>Use this area to provide additional information.</p>
+
+<div id='map' style='width: 400px; height: 300px;'></div>
+<script>
+  mapboxgl.accessToken = 'pk.eyJ1Ijoia3h1dTAwMjUiLCJhIjoiY2tnOHY3MG1hMDBpbTJ0czJ0MWpuOXU1ayJ9.VVM65g0hQ_-XUP6KGqAu4A';
+  var map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/streets-v11'
+  });
+</script>
+

@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MapStoreContainer" CdmEntityContainer="MapContainer">
+    <EntitySetMapping Name="MapLocations">
+      <EntityTypeMapping TypeName="IsTypeOf(Map.MapLocation)">
+        <MappingFragment StoreEntitySet="MapLocations">
+          <ScalarProperty Name="LocationId" ColumnName="LocationId" />
+          <ScalarProperty Name="LocationName" ColumnName="LocationName" />
+          <ScalarProperty Name="longitude" ColumnName="longitude" />
+          <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -58,11 +58,11 @@ namespace FIT5032_AssignmentX
             //   appId: "",
             //   appSecret: "");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "826910376663-sbrjq6p6p8ojtt4a8o1k2dcqbf30urfg.apps.googleusercontent.com",
+                ClientSecret = "DzFDdAfarpDqTnCh1F8lS7Fa"
+            });
         }
     }
 }

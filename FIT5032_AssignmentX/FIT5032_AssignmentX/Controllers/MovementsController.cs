@@ -14,6 +14,7 @@ using PagedList;
 namespace FIT5032_AssignmentX.Controllers
 {
     [Authorize (Roles ="admin")]
+    [ValidateInput(false)]
     public class MovementsController : Controller
     {
         private MovesContainer db = new MovesContainer();

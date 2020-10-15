@@ -7,6 +7,14 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
+
+    <script src='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' rel='stylesheet' />
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/offline-exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -23,6 +31,7 @@
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Map", "Index", "MapLocations")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                     @if (User.IsInRole("user") || User.IsInRole("admin"))
                     {

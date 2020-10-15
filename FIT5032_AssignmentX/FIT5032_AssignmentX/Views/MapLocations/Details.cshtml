@@ -1,0 +1,51 @@
+﻿@model FIT5032_AssignmentX.Models.MapLocation
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>MapLocation</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.LocationName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LocationName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.longitude)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.longitude)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Latitude)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Latitude)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.LocationId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

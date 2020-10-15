@@ -10,9 +10,11 @@ using FIT5032_AssignmentX.Models;
 using Microsoft.AspNet.Identity;
 using PagedList;
 
+
 namespace FIT5032_AssignmentX.Controllers
 {
     [Authorize]
+    [ValidateInput(false)]
     public class MovePlansController : Controller
     {
         private MovesContainer db = new MovesContainer();
@@ -227,6 +229,40 @@ namespace FIT5032_AssignmentX.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        public ActionResult Report()
+        {
+            var name1 = (from a in db.MovePlans orderby a.MoveName select a).ToList();
+            List<MovePlans> name2 = (from a in db.MovePlans orderby a.MoveName select a).ToList();
+            List<String> string2 = new List<String>();
+            List<int> string3 = new List<int>();
+            string3.Add(0);
+            var index = 0;
+            foreach (var a in name2)
+            {
+                if (!string2.Contains(a.MoveName.ToString()))
+                {
+                    string2.Add(a.MoveName.ToString());
+                    index++;
+                    string3.Add(0);
+                    string3[index] += a.Round * a.Time;
+                }
+                else {
+                    string3[index] += a.Round * a.Time;
+                }
+            }
+            ViewBag.list = string2;
+            ViewBag.round = string3;
+            return View();
+        }
+
+        public ActionResult SendEmail()
+        {
+            SendEmail sd = new SendEmail();
+            sd.Send();
+            return View();
+        }
+
 
         protected override void Dispose(bool disposing)
         {
