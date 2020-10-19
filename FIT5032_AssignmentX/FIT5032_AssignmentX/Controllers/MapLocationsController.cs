@@ -7,6 +7,8 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using FIT5032_AssignmentX.Models;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace FIT5032_AssignmentX.Controllers
 {
@@ -18,6 +20,28 @@ namespace FIT5032_AssignmentX.Controllers
         // GET: MapLocations
         public ActionResult Index()
         {
+            //list<maplocation> des = (from a in db.maplocations orderby a.description select a).tolist();
+            //list<string> name = new list<string>();
+            //var i = 0;
+            //foreach (var m in des)
+            //{
+            //    list<string> co = new list<string>();
+            //    co.add(m.latitude);
+            //    co.add(m.longitude);
+            //    i++;
+            //    var result = new
+            //    {
+            //        type = "feature",
+            //        properties = new { description = "<strong>" + m.locationname.tostring() + "</strong>" + m.description.tostring() },
+            //        geometry = new
+            //        {
+            //            type = "point",
+            //            coordinates = co.tostring()
+            //        }
+            //    };
+            //    name.add(result.tostring());
+            //}
+            //viewbag.str = name;
             return View(db.MapLocations.ToList());
         }
 
