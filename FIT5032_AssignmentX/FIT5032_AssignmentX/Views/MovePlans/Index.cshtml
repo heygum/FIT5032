@@ -40,12 +40,12 @@
         <th>
             @Html.ActionLink("Date", "Index", new { sortOrder = ViewBag.DateSortParm, currentFilter = ViewBag.CurrentFilter })
         </th>
-        @if (User.IsInRole("admin"))
+        @*@if (User.IsInRole("admin"))
         {
             <th>
                 @Html.ActionLink("User ID", "Index", new { sortOrder = ViewBag.UserIDSortParm, currentFilter = ViewBag.CurrentFilter })
             </th>
-        }
+        }*@
         <th></th>
     </tr>
 
@@ -66,12 +66,12 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Date)
                 </td>
-                @if (User.IsInRole("admin"))
+                @*@if (User.IsInRole("admin"))
                 {
                     <td>
                         @Html.DisplayFor(modelItem => item.UserID)
                     </td>
-                }
+                }*@
                 <td>
                     @Html.ActionLink("Edit", "Edit", new { id = item.PlanId }) |
                     @Html.ActionLink("Details", "Details", new { id = item.PlanId }) |
