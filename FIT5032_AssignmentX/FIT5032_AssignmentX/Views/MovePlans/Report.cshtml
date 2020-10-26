@@ -32,18 +32,24 @@
         }]
     };
     var chart = Highcharts.chart('container', options);
+
 </script>
 
 <div class="row">
     <div class="col-md-12">
         <div class="card">
-                <p class="text-center"><a href="~/MovePlans/SendEmail" class="btn btn-primary" role="button">Send Email</a></p>
+            <p class="text-center"><a href="~/MovePlans/Report2" class="btn btn-primary" role="button">Send Email</a></p>
         </div>
     </div>
 
     <div class="col-md-12">
         <div class="card">
-                <p class="text-center"><a href="~/MovePlans/Index" class="btn btn-default" role="button">back</a></p>
+            <p class="text-center"><a href="~/MovePlans/Index" class="btn btn-default" role="button">back</a></p>
         </div>
     </div>
 </div>
+
+<form action="/MovePlans/UploadFile" method="post" enctype="multipart/form-data">
+    <input type="file" name="file" /><br />
+    <input type="submit" value="upload" />
+</form>

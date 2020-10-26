@@ -9,7 +9,8 @@ using System.Web.Mvc;
 using FIT5032_AssignmentX.Models;
 using Microsoft.AspNet.Identity;
 using PagedList;
-
+using System.Web.UI.WebControls;
+using System.IO;
 
 namespace FIT5032_AssignmentX.Controllers
 {
@@ -247,7 +248,8 @@ namespace FIT5032_AssignmentX.Controllers
                     string3.Add(0);
                     string3[index] += a.Round * a.Time;
                 }
-                else {
+                else
+                {
                     string3[index] += a.Round * a.Time;
                 }
             }
@@ -256,12 +258,38 @@ namespace FIT5032_AssignmentX.Controllers
             return View();
         }
 
-        public ActionResult SendEmail()
+        [HttpPost]
+        public ActionResult Report(HttpPostedFileBase file)
+        {
+           
+            var fileName = file.FileName;
+            var filePath = Server.MapPath(string.Format("~/{0}", "File"));
+            file.SaveAs(Path.Combine(filePath, fileName));
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult SendEmail(Image image, HttpPostedFileBase postedFile)
         {
             SendEmail sd = new SendEmail();
             sd.Send();
             return View();
         }
+
+        public ActionResult UploadFile()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult UploadFile(HttpPostedFileBase file)
+        {
+            var fileName = file.FileName;
+            var filePath = Server.MapPath(string.Format("~/{0}", "File"));
+            file.SaveAs(Path.Combine(filePath, fileName));
+            return View();
+        }
+
 
 
         protected override void Dispose(bool disposing)
