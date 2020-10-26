@@ -2,8 +2,8 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
     <form action="/MovePlans/UploadFile" method="post" enctype="multipart/form-data">
-        <input type="file" name="file" /><br />
-        <input type="submit" value="提交" />
+        <label for="exampleFormControlFile1">Choose the file you want to attach.</label>
+        <input type="file" class="form-control-file" name="file" /><br />
+        <button type="submit" class="btn btn-primary">Submit</button>
     </form>

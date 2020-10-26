@@ -696,7 +696,6 @@
     <Content Include="Views\MapLocations\Index.cshtml" />
     <Content Include="Views\MovePlans\Report.cshtml" />
     <Content Include="Views\MovePlans\SendEmail.cshtml" />
-    <Content Include="Views\MovePlans\UploadFile.cshtml" />
     <Content Include="Scripts\tinymce\skins\lightgray\fonts\tinymce.woff" />
     <Content Include="Scripts\tinymce\skins\lightgray\fonts\tinymce.ttf" />
     <Content Include="Scripts\tinymce\skins\lightgray\fonts\tinymce.eot" />
@@ -710,6 +709,7 @@
     <Content Include="Views\Comments\Details.cshtml" />
     <Content Include="Views\Comments\Edit.cshtml" />
     <Content Include="Views\Comments\Index.cshtml" />
+    <Content Include="Views\MovePlans\UploadFile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="File\" />

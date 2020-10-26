@@ -258,21 +258,9 @@ namespace FIT5032_AssignmentX.Controllers
             return View();
         }
 
-        [HttpPost]
-        public ActionResult Report(HttpPostedFileBase file)
-        {
-           
-            var fileName = file.FileName;
-            var filePath = Server.MapPath(string.Format("~/{0}", "File"));
-            file.SaveAs(Path.Combine(filePath, fileName));
-            return View();
-        }
 
-        [HttpPost]
-        public ActionResult SendEmail(Image image, HttpPostedFileBase postedFile)
+        public ActionResult SendEmail()
         {
-            SendEmail sd = new SendEmail();
-            sd.Send();
             return View();
         }
 
@@ -284,10 +272,13 @@ namespace FIT5032_AssignmentX.Controllers
         [HttpPost]
         public ActionResult UploadFile(HttpPostedFileBase file)
         {
+            var name = file.ToString();
             var fileName = file.FileName;
             var filePath = Server.MapPath(string.Format("~/{0}", "File"));
             file.SaveAs(Path.Combine(filePath, fileName));
-            return View();
+            SendEmail sd = new SendEmail();
+            sd.Send(fileName, filePath);
+            return RedirectToAction("SendEmail", "MovePlans");
         }
 
 

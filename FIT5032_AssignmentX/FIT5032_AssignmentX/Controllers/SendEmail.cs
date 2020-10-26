@@ -28,5 +28,21 @@ namespace FIT5032_AssignmentX.Controllers
             msg.AddAttachment("small1.jpg", file);
             var response = client.SendEmailAsync(msg);
         }
+
+        public void Send(string name, string path)
+        {
+            var code = Path.Combine(path, name);
+            var client = new SendGridClient(API_KEY);
+            var from = new EmailAddress("heygum97@gmail.com", "CEO");
+            var to = new EmailAddress("kxuu0025@student.monash.edu", "Boxer");
+            var subject = "Report of your movePlans";
+            var plainTextContent = "..";
+            var htmlContent = "<p>" + "Hello, User." + "</p>";
+            var msg = MailHelper.CreateSingleEmail(from, to, subject, plainTextContent, htmlContent);
+            var bytes = File.ReadAllBytes(code);
+            var file = Convert.ToBase64String(bytes);
+            msg.AddAttachment(name, file);
+            var response = client.SendEmailAsync(msg);
+        }
     }
 }
