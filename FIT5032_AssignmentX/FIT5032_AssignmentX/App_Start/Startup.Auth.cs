@@ -4,6 +4,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
+using Microsoft.Owin.Security.Twitter;
 using Owin;
 using FIT5032_AssignmentX.Models;
 
@@ -34,7 +35,7 @@ namespace FIT5032_AssignmentX
                         validateInterval: TimeSpan.FromMinutes(30),
                         regenerateIdentity: (manager, user) => user.GenerateUserIdentityAsync(manager))
                 }
-            });            
+            });
             app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);
 
             // Enables the application to temporarily store user information when they are verifying the second factor in the two-factor authentication process.
@@ -46,17 +47,25 @@ namespace FIT5032_AssignmentX
             app.UseTwoFactorRememberBrowserCookie(DefaultAuthenticationTypes.TwoFactorRememberBrowserCookie);
 
             // Uncomment the following lines to enable logging in with third party login providers
-            //app.UseMicrosoftAccountAuthentication(
-            //    clientId: "",
-            //    clientSecret: "");
 
+            app.UseMicrosoftAccountAuthentication(
+                clientId: "12ddd58c-745f-4737-b716-098bf8309a6c",
+                clientSecret: "-AhE_.lO9-20vfGoY-XV6791Ymli9NFYW5");
+
+            //System.Net.ServicePointManager.SecurityProtocol |= System.Net.SecurityProtocolType.Tls12;
             //app.UseTwitterAuthentication(
-            //   consumerKey: "",
-            //   consumerSecret: "");
-
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            //    consumerKey: "zcD0QkUbHjpKrwFn73sIfU0hD",
+            //    consumerSecret: "YL52tRhrk3UnS3agXA94LWI7gjJqKWI0jxIAWKX5bwAwK1nQDf"
+            //);
+            //zcD0QkUbHjpKrwFn73sIfU0hD
+            //YL52tRhrk3UnS3agXA94LWI7gjJqKWI0jxIAWKX5bwAwK1nQDf
+            //AAAAAAAAAAAAAAAAAAAAAIaPJAEAAAAAaSiBU%2FU68Sg6Co3a0dA0RGTLDgM%3DuE0Uc4k1jkGAh30K4gzszZ2XZtRc9wl58v8Ww8ZMiuj3CLxMDV
+            //1320609547854041088-HupCSvRADgFHS3ihSpba4ygnLSK46J
+            //kS8fvCZGHvuQmW9d1AiKGMKhoaQHChd7Z4yAcJTmui0M6
+            //rDZaDjI023cQYX7EM8Nb9WyzI, ObjAJWZbnchL6SvqEndXuxGHN7JZeStYCVR9FIFN4IvnFdqeiD, AAAAAAAAAAAAAAAAAAAAAPKVJAEAAAAAFRb09wnyQNBDdUv6jE6NrpWf7Gk%3DfP6rb2g1B9XBIUxGQQPzdKZEPn5SWwH3kRhwpMCHSg6DciznEB
+            app.UseFacebookAuthentication(
+               appId: "965702340603651",
+               appSecret: "f2f6529d9322e151bf256eb8657331a8");
 
             app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             {

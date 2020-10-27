@@ -1,16 +1,23 @@
 ﻿@{
     ViewBag.Title = "About";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
 
 
-<div id='map' style='width: 400px; height: 300px;'></div>
-<script>
-  mapboxgl.accessToken = 'pk.eyJ1Ijoia3h1dTAwMjUiLCJhIjoiY2tnOHY3MG1hMDBpbTJ0czJ0MWpuOXU1ayJ9.VVM65g0hQ_-XUP6KGqAu4A';
-  var map = new mapboxgl.Map({
-    container: 'map',
-    style: 'mapbox://styles/mapbox/streets-v11'
-  });
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/rating.js"></script>
+<link rel="stylesheet" href="~/Content/rating.css" type="text/css" media="screen" title="Rating CSS">
+
+<script type="text/javascript">
+    $(function () {
+        $('.container').rating();
+    });
 </script>
 
+
+<div class="container">
+    <input type="radio" name="example" class="rating" value="1" />
+    <input type="radio" name="example" class="rating" value="2" />
+    <input type="radio" name="example" class="rating" value="3" />
+    <input type="radio" name="example" class="rating" value="4" />
+    <input type="radio" name="example" class="rating" value="5" />
+</div>

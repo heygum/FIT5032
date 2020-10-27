@@ -105,7 +105,6 @@ C:\Users\CJ\Source\Repos\FIT5032_AssignmentX\FIT5032_AssignmentX\obj\Debug\FIT50
 C:\Users\CJ\Source\Repos\FIT5032_AssignmentX\FIT5032_AssignmentX\obj\Debug\FIT5032_AssignmentX.csproj.CopyComplete
 C:\Users\CJ\Source\Repos\FIT5032_AssignmentX\FIT5032_AssignmentX\obj\Debug\FIT5032_AssignmentX.dll
 C:\Users\CJ\Source\Repos\FIT5032_AssignmentX\FIT5032_AssignmentX\obj\Debug\FIT5032_AssignmentX.pdb
-C:\Users\CJ\Source\Repos\FIT5032_AssignmentX\FIT5032_AssignmentX\obj\Debug\FIT5032_AssignmentX.csprojAssemblyReference.cache
 C:\Users\CJ\Source\Repos\FIT5032_AssignmentX\FIT5032_AssignmentX\bin\System.Web.Providers.dll
 C:\Users\CJ\Source\Repos\FIT5032_AssignmentX\FIT5032_AssignmentX\bin\System.Web.Providers.xml
 C:\Users\CJ\Source\Repos\FIT5032_AssignmentX\FIT5032_AssignmentX\bin\PagedList.dll
@@ -116,3 +115,4 @@ C:\Users\CJ\Source\Repos\FIT5032_AssignmentX\FIT5032_AssignmentX\bin\SendGrid.dl
 C:\Users\CJ\Source\Repos\FIT5032_AssignmentX\FIT5032_AssignmentX\bin\StarkbankEcdsa.dll
 C:\Users\CJ\Source\Repos\FIT5032_AssignmentX\FIT5032_AssignmentX\bin\SendGrid.pdb
 C:\Users\CJ\Source\Repos\FIT5032_AssignmentX\FIT5032_AssignmentX\bin\SendGrid.xml
+C:\Users\CJ\Source\Repos\FIT5032_AssignmentX\FIT5032_AssignmentX\obj\Debug\FIT5032_AssignmentX.csprojAssemblyReference.cache
