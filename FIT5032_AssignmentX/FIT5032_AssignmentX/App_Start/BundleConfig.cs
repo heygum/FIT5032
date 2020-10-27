@@ -19,6 +19,11 @@ namespace FIT5032_AssignmentX
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/modernizr-*"));
 
+            bundles.Add(new ScriptBundle("~/bundles/rating").Include(
+                      "~/Scripts/star-rating.js",
+                      "~/Scripts/krajee-svg/theme.js",
+                      "~/Scripts/locales/es.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/bootstrap-datepicker.js"));
@@ -28,6 +33,7 @@ namespace FIT5032_AssignmentX
                       "~/Content/site.css"));
             bundles.Add(new StyleBundle("~/bundles/map").Include(
                       "~/Scripts/location.js"));
+
         }
     }
 }

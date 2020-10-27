@@ -10,6 +10,7 @@ using FIT5032_AssignmentX.Models;
 
 namespace FIT5032_AssignmentX.Controllers
 {
+
     public class CommentsController : Controller
     {
         private TextContainer db = new TextContainer();
@@ -35,15 +36,18 @@ namespace FIT5032_AssignmentX.Controllers
             return View(comments);
         }
 
+        [Authorize(Roles = "admin")]
         // GET: Comments/Create
         public ActionResult Create()
         {
+
             return View();
         }
 
         // POST: Comments/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Contents")] Comments comments)
@@ -59,6 +63,7 @@ namespace FIT5032_AssignmentX.Controllers
         }
 
         // GET: Comments/Edit/5
+        [Authorize(Roles = "admin")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -78,6 +83,7 @@ namespace FIT5032_AssignmentX.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "admin")]
         public ActionResult Edit([Bind(Include = "Id,Contents")] Comments comments)
         {
             if (ModelState.IsValid)
@@ -88,7 +94,7 @@ namespace FIT5032_AssignmentX.Controllers
             }
             return View(comments);
         }
-
+        [Authorize(Roles = "admin")]
         // GET: Comments/Delete/5
         public ActionResult Delete(int? id)
         {
@@ -103,7 +109,7 @@ namespace FIT5032_AssignmentX.Controllers
             }
             return View(comments);
         }
-
+        [Authorize(Roles = "admin")]
         // POST: Comments/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]

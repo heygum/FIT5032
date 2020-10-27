@@ -59,7 +59,7 @@ namespace FIT5032_AssignmentX.Controllers
             }
             return View(mapLocation);
         }
-
+        [Authorize(Roles = "admin")]
         // GET: MapLocations/Create
         public ActionResult Create()
         {
@@ -69,6 +69,7 @@ namespace FIT5032_AssignmentX.Controllers
         // POST: MapLocations/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "LocationId,LocationName,longitude,Latitude,Description")] MapLocation mapLocation)
@@ -84,6 +85,7 @@ namespace FIT5032_AssignmentX.Controllers
         }
 
         // GET: MapLocations/Edit/5
+        [Authorize(Roles = "admin")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -101,6 +103,7 @@ namespace FIT5032_AssignmentX.Controllers
         // POST: MapLocations/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "LocationId,LocationName,longitude,Latitude,Description")] MapLocation mapLocation)
@@ -113,7 +116,7 @@ namespace FIT5032_AssignmentX.Controllers
             }
             return View(mapLocation);
         }
-
+        [Authorize(Roles = "admin")]
         // GET: MapLocations/Delete/5
         public ActionResult Delete(int? id)
         {
@@ -128,7 +131,7 @@ namespace FIT5032_AssignmentX.Controllers
             }
             return View(mapLocation);
         }
-
+        [Authorize(Roles = "admin")]
         // POST: MapLocations/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]

@@ -47,6 +47,7 @@
                     {
                         <li>@Html.ActionLink("Manage", "Manage", "Home")</li>
                     }
+                    <li>@Html.ActionLink("Artical", "Index", "Comments")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
@@ -62,6 +63,7 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/rating")
     @RenderSection("scripts", required: false)
 </body>
 </html>
