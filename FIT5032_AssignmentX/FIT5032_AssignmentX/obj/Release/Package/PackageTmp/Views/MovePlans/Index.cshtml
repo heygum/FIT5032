@@ -1,0 +1,91 @@
+﻿@using Microsoft.AspNet.Identity
+@model PagedList.IPagedList<FIT5032_AssignmentX.Models.MovePlans>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+@{
+    ViewBag.Title = "Movements Plan";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Movements Plan</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+<p>
+    @Html.ActionLink("View Report", "Report")
+</p>
+
+@using (Html.BeginForm("Index", "MovePlans", FormMethod.Get))
+{
+    <p>
+        Find by name: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+        <input type="submit" class="btn btn-primary" value="Search" />
+    </p>
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.ActionLink("Move Name", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            @Html.ActionLink("Round", "Index", new { sortOrder = ViewBag.RoundSortParm, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            @Html.ActionLink("Time", "Index", new { sortOrder = ViewBag.TimeSortParm, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            @Html.ActionLink("Date", "Index", new { sortOrder = ViewBag.DateSortParm, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        @*@if (User.IsInRole("admin"))
+        {
+            <th>
+                @Html.ActionLink("User ID", "Index", new { sortOrder = ViewBag.UserIDSortParm, currentFilter = ViewBag.CurrentFilter })
+            </th>
+        }*@
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        if (User.Identity.GetUserId() == item.UserID || User.IsInRole("admin"))
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MoveName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Round)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Time)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                @*@if (User.IsInRole("admin"))
+                {
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UserID)
+                    </td>
+                }*@
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.PlanId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.PlanId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.PlanId })
+                </td>
+            </tr>
+        }
+    }
+
+</table>
+
+<br />
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+

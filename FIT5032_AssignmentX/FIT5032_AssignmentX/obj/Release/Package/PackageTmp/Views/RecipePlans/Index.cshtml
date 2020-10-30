@@ -1,0 +1,85 @@
+﻿@using Microsoft.AspNet.Identity
+@model PagedList.IPagedList<FIT5032_AssignmentX.Models.RecipePlans>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+@{
+    ViewBag.Title = "Recipe Plan";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Recipe Plan</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+@using (Html.BeginForm("Index", "RecipePlans", FormMethod.Get))
+{
+    <p>
+        Find by name: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+        <input type="submit" class="btn btn-primary" value="Search" />
+    </p>
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.ActionLink("Recipe Name", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            @Html.ActionLink("Calorie", "Index", new { sortOrder = ViewBag.CalorieSortParm, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            @Html.ActionLink("Quantity", "Index", new { sortOrder = ViewBag.QuantitySortParm, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            @Html.ActionLink("Date", "Index", new { sortOrder = ViewBag.DateSortParm, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        @if (User.IsInRole("admin"))
+        {
+            <th>
+                @Html.ActionLink("UserID", "Index", new { sortOrder = ViewBag.UserIDSortParm, currentFilter = ViewBag.CurrentFilter })
+            </th>
+        }
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        if (User.Identity.GetUserId() == item.UserID || User.IsInRole("admin"))
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ReciName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Calorie)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quantity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                @if (User.IsInRole("admin"))
+                {
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UserID)
+                    </td>
+                }
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.PlanID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.PlanID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.PlanID })
+                </td>
+            </tr>
+        }
+    }
+
+</table>
+<br />
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))

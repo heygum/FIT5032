@@ -48,15 +48,15 @@ namespace FIT5032_AssignmentX
 
             // Uncomment the following lines to enable logging in with third party login providers
 
-            app.UseMicrosoftAccountAuthentication(
-                clientId: "12ddd58c-745f-4737-b716-098bf8309a6c",
-                clientSecret: "-AhE_.lO9-20vfGoY-XV6791Ymli9NFYW5");
+            //app.UseMicrosoftAccountAuthentication(
+            //    clientId: "12ddd58c-745f-4737-b716-098bf8309a6c",
+            //    clientSecret: "-AhE_.lO9-20vfGoY-XV6791Ymli9NFYW5");
 
-            //System.Net.ServicePointManager.SecurityProtocol |= System.Net.SecurityProtocolType.Tls12;
-            //app.UseTwitterAuthentication(
-            //    consumerKey: "zcD0QkUbHjpKrwFn73sIfU0hD",
-            //    consumerSecret: "YL52tRhrk3UnS3agXA94LWI7gjJqKWI0jxIAWKX5bwAwK1nQDf"
-            //);
+            System.Net.ServicePointManager.SecurityProtocol |= System.Net.SecurityProtocolType.Tls12;
+            app.UseTwitterAuthentication(
+                consumerKey: "zcD0QkUbHjpKrwFn73sIfU0hD",
+                consumerSecret: "YL52tRhrk3UnS3agXA94LWI7gjJqKWI0jxIAWKX5bwAwK1nQDf"
+            );
             //zcD0QkUbHjpKrwFn73sIfU0hD
             //YL52tRhrk3UnS3agXA94LWI7gjJqKWI0jxIAWKX5bwAwK1nQDf
             //AAAAAAAAAAAAAAAAAAAAAIaPJAEAAAAAaSiBU%2FU68Sg6Co3a0dA0RGTLDgM%3DuE0Uc4k1jkGAh30K4gzszZ2XZtRc9wl58v8Ww8ZMiuj3CLxMDV

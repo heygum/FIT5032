@@ -11,6 +11,8 @@ using Microsoft.AspNet.Identity;
 using PagedList;
 using System.Web.UI.WebControls;
 using System.IO;
+using System.Web.Security;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace FIT5032_AssignmentX.Controllers
 {
@@ -19,73 +21,16 @@ namespace FIT5032_AssignmentX.Controllers
     public class MovePlansController : Controller
     {
         private MovesContainer db = new MovesContainer();
-
-        // GET: MovePlans
-        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
+    // GET: MovePlans
+    public ActionResult Index()
         {
-            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
-            ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
-            ViewBag.RoundSortParm = sortOrder == "Round" ? "round_desc" : "Round";
-            ViewBag.TImeSortParm = sortOrder == "Time" ? "time_desc" : "Time";
-            ViewBag.UserIDSortParm = sortOrder == "UserID" ? "userid_desc" : "UserID";
-
-            if (searchString != null)
-            {
-                page = 1;
-            }
-            else
-            {
-                searchString = currentFilter;
-            }
-
-            ViewBag.CurrentFilter = searchString;
             var UserID = User.Identity.GetUserId();
             var moves = from s in db.MovePlans where s.UserID == UserID select s;
             if (User.IsInRole("admin"))
             { 
                 moves = from s in db.MovePlans select s; 
             }
-            
-            if (!String.IsNullOrEmpty(searchString))
-            {
-                moves = moves.Where(s => s.MoveName.Contains(searchString));
-            }
-            switch (sortOrder)
-            {
-                case "name_desc":
-                    moves = moves.OrderByDescending(s => s.MoveName);
-                    break;
-                case "Date":
-                    moves = moves.OrderBy(s => s.Date);
-                    break;
-                case "date_desc":
-                    moves = moves.OrderByDescending(s => s.Date);
-                    break;
-                case "Round":
-                    moves = moves.OrderBy(s => s.Round);
-                    break;
-                case "round_desc":
-                    moves = moves.OrderByDescending(s => s.Round);
-                    break;
-                case "Time":
-                    moves = moves.OrderBy(s => s.Time);
-                    break;
-                case "time_desc":
-                    moves = moves.OrderByDescending(s => s.Time);
-                    break;
-                case "UserID":
-                    moves = moves.OrderBy(s => s.UserID);
-                    break;
-                case "userid_desc":
-                    moves = moves.OrderByDescending(s => s.UserID);
-                    break;
-                default:
-                    moves = moves.OrderBy(s => s.MoveName);
-                    break;
-            }
-            int pageSize = 10;
-            int pageNumber = (page ?? 1);
-            return View(moves.ToPagedList(pageNumber, pageSize));
+            return View(db.MovePlans.ToList());
         }
 
         // GET: MovePlans/Details/5
@@ -109,12 +54,39 @@ namespace FIT5032_AssignmentX.Controllers
         }
 
         // GET: MovePlans/Create
-        public ActionResult Create()
+        //public ActionResult Create()
+        //{
+        //    var lstskill = (from a in db.Movements orderby a.MovementName select a).ToList();
+        //    ViewBag.move = ToSelectList(lstskill);
+        //    ViewBag.move = new SelectList(db.Movements,"MovementName");
+        //    return View();
+        //}
+
+        public ActionResult Create(String date)
         {
             var lstskill = (from a in db.Movements orderby a.MovementName select a).ToList();
+            var eachPlan = (from a in db.MovePlans select a).ToList();
             ViewBag.move = ToSelectList(lstskill);
-            //ViewBag.move = new SelectList(db.Movements,"MovementName");
-            return View();
+            if (null == date)
+                return RedirectToAction("Index");
+            MovePlans e = new MovePlans();
+            DateTime convertedDate = DateTime.Parse(date);
+            bool flag = true;
+            foreach (var i in eachPlan)
+            {
+                if (i.Date.Equals(convertedDate))
+                {
+                    flag = false;
+                    break;
+                }
+                else
+                    flag = true;
+            }
+            e.Date = convertedDate;
+            if (flag)
+                return View(e);
+            else
+                return RedirectToAction("Index");
         }
 
         public SelectList ToSelectList(List<Movements> lstskill)
@@ -233,12 +205,17 @@ namespace FIT5032_AssignmentX.Controllers
 
         public ActionResult Report()
         {
+            var UserID = User.Identity.GetUserId();
             var name1 = (from a in db.MovePlans orderby a.MoveName select a).ToList();
-            List<MovePlans> name2 = (from a in db.MovePlans orderby a.MoveName select a).ToList();
+            List<MovePlans> name2 = (from a in db.MovePlans orderby a.MoveName where a.UserID == UserID select a).ToList();
+            if (User.IsInRole("admin"))
+            { 
+                name2 = (from a in db.MovePlans orderby a.MoveName select a).ToList();
+             }
             List<String> string2 = new List<String>();
             List<int> string3 = new List<int>();
             string3.Add(0);
-            var index = 0;
+            var index = -1;
             foreach (var a in name2)
             {
                 if (!string2.Contains(a.MoveName.ToString()))
@@ -272,12 +249,17 @@ namespace FIT5032_AssignmentX.Controllers
         [HttpPost]
         public ActionResult UploadFile(HttpPostedFileBase file)
         {
+            var db2 = new ApplicationDbContext();
+            IdentityUser user = db2.Users.FirstOrDefault<IdentityUser>(u => u.UserName == User.Identity.Name);
+            string email = null;
+            if (User.Identity.IsAuthenticated)
+                email = user.Email;
             var name = file.ToString();
             var fileName = file.FileName;
             var filePath = Server.MapPath(string.Format("~/{0}", "File"));
             file.SaveAs(Path.Combine(filePath, fileName));
             SendEmail sd = new SendEmail();
-            sd.Send(fileName, filePath);
+            sd.Send(fileName, filePath, email);
             return RedirectToAction("SendEmail", "MovePlans");
         }
 

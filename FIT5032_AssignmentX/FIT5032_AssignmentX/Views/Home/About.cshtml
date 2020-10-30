@@ -4,16 +4,16 @@
     ViewBag.Title = "About";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 <link href="~/Content/star-rating.css" media="all" rel="stylesheet" type="text/css" />
 <link href="~/Scripts/krajee-svg/theme.css" media="all" rel="stylesheet" type="text/css" />
+
 <h2>
     This Website let you living like a boxer.
 </h2>
 
 <script>
     $("#input-1").rating({ min: 1, max: 10, step: 2, size: 'lg' });
-    }
+    
 </script>
 
 <script type="text/javascript">
@@ -35,3 +35,5 @@
     <button type="reset" class="btn btn-secondary">Reset</button>
     <p>Have @ViewBag.number people rated.</p>
 </form>
+
+

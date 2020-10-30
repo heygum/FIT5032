@@ -1,0 +1,37 @@
+﻿@model IEnumerable<FIT5032_AssignmentX.Models.Rate>
+
+@{
+    ViewBag.Title = "About";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/Content/star-rating.css" media="all" rel="stylesheet" type="text/css" />
+<link href="~/Scripts/krajee-svg/theme.css" media="all" rel="stylesheet" type="text/css" />
+<h2>
+    This Website let you living like a boxer.
+</h2>
+
+<script>
+    $("#input-1").rating({ min: 1, max: 10, step: 2, size: 'lg' });
+    }
+</script>
+
+<script type="text/javascript">
+    var commitStatus = false;
+    function dosubmit() {
+        if (commitStatus == false) {
+            commitStatus = true;
+            return true;
+        } else {
+            return false;
+        }
+    }
+</script>
+
+<form method="post" onsubmit="return dosubmit()">
+    <label for="input-1" class="control-label">Pleae rating our website!</label>
+    <input id="input-1" name="input-1" class="rating rating-loading" value="@ViewBag.average" data-min="0" data-max="5" data-step="1">
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="reset" class="btn btn-secondary">Reset</button>
+    <p>Have @ViewBag.number people rated.</p>
+</form>

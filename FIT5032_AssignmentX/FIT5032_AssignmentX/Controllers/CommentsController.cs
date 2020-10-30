@@ -7,9 +7,12 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using FIT5032_AssignmentX.Models;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace FIT5032_AssignmentX.Controllers
 {
+    [Authorize(Roles = "admin")]
+    [ValidateInput(false)]
 
     public class CommentsController : Controller
     {
@@ -34,6 +37,68 @@ namespace FIT5032_AssignmentX.Controllers
                 return HttpNotFound();
             }
             return View(comments);
+        }
+
+        public ActionResult SendEmail(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Comments comments = db.Comments.Find(id);
+            if (comments == null)
+            {
+                return HttpNotFound();
+            }
+            return View(comments);
+        }
+
+        [HttpPost]
+        public ActionResult SendEmail(int? id, FormCollection post)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Comments comments = db.Comments.Find(id);
+            if (comments == null)
+            {
+                return HttpNotFound();
+            }
+            string c = comments.Contents;
+            string email = post["emailsend"];
+            SendEmail sd = new SendEmail();
+            sd.Send(c, email);
+            return RedirectToAction("SendEmail2", "Comments");
+        }
+
+        public ActionResult SendBulkEmail(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Comments comments = db.Comments.Find(id);
+            if (comments == null)
+            {
+                return HttpNotFound();
+            }
+            string c = comments.Contents;
+            var db2 = new ApplicationDbContext();
+            List<string> emailList = new List<string>();
+            List<ApplicationUser> UserList = (from a in db2.Users select a).ToList();
+            foreach (var u in UserList)
+            {
+                emailList.Add(u.Email);
+            }
+            SendEmail sd = new SendEmail();
+            sd.SendBulk(c,emailList);
+            return RedirectToAction("SendEmail2", "Comments");
+        }
+
+        public ActionResult SendEmail2()
+        {
+            return View();
         }
 
         [Authorize(Roles = "admin")]

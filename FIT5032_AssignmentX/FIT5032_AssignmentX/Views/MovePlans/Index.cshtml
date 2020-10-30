@@ -1,7 +1,8 @@
 ﻿@using Microsoft.AspNet.Identity
-@model PagedList.IPagedList<FIT5032_AssignmentX.Models.MovePlans>
-@using PagedList.Mvc;
+@model IEnumerable<FIT5032_AssignmentX.Models.MovePlans>
+
 <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+<link href="~/Content/fullcalendar.min.css" rel="stylesheet" />
 
 @{
     ViewBag.Title = "Movements Plan";
@@ -9,83 +10,82 @@
 }
 
 <h2>Movements Plan</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<div id="calendar"></div>
 
 <p>
     @Html.ActionLink("View Report", "Report")
 </p>
+<div style="display: none">
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
 
-@using (Html.BeginForm("Index", "MovePlans", FormMethod.Get))
-{
-    <p>
-        Find by name: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
-        <input type="submit" class="btn btn-primary" value="Search" />
-    </p>
-}
+
+
 
 <table class="table">
-    <tr>
-        <th>
-            @Html.ActionLink("Move Name", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
-        </th>
-        <th>
-            @Html.ActionLink("Round", "Index", new { sortOrder = ViewBag.RoundSortParm, currentFilter = ViewBag.CurrentFilter })
-        </th>
-        <th>
-            @Html.ActionLink("Time", "Index", new { sortOrder = ViewBag.TimeSortParm, currentFilter = ViewBag.CurrentFilter })
-        </th>
-        <th>
-            @Html.ActionLink("Date", "Index", new { sortOrder = ViewBag.DateSortParm, currentFilter = ViewBag.CurrentFilter })
-        </th>
-        @*@if (User.IsInRole("admin"))
-        {
+    <thead>
+        <tr>
             <th>
-                @Html.ActionLink("User ID", "Index", new { sortOrder = ViewBag.UserIDSortParm, currentFilter = ViewBag.CurrentFilter })
+                @Html.DisplayNameFor(model => model.MoveName)
             </th>
-        }*@
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
-        if (User.Identity.GetUserId() == item.UserID || User.IsInRole("admin"))
+            <th>
+                @Html.DisplayNameFor(model => model.Round)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Time)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.MoveName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Round)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Time)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Date)
-                </td>
-                @*@if (User.IsInRole("admin"))
-                {
-                    <td>
-                        @Html.DisplayFor(modelItem => item.UserID)
+            if (User.Identity.GetUserId() == item.UserID || User.IsInRole("admin"))
+            {
+                <tr class="events">
+                    <td class="name">
+                        @Html.DisplayFor(modelItem => item.MoveName)
                     </td>
-                }*@
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.PlanId }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.PlanId }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.PlanId })
-                </td>
-            </tr>
+                    <td class="round">
+                        @Html.DisplayFor(modelItem => item.Round)
+                    </td>
+                    <td class="time">
+                        @Html.DisplayFor(modelItem => item.Time)
+                    </td>
+                    <td class="date">
+                        @Html.DisplayFor(modelItem => item.Date)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.PlanId }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.PlanId }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.PlanId })
+                    </td>
+                </tr>
+            }
         }
-    }
-
+    </tbody>
 </table>
 
-<br />
-Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
 
-@Html.PagedListPager(Model, page => Url.Action("Index",
-    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/Scripts/DataTables/jquery.dataTables.js")
+    @Scripts.Render("~/Scripts/DataTables/dataTables.bootstrap.js")
+    @Scripts.Render("~/bundles/fullcalendar")
+    <script>
+        $(document).ready(function () {
+            $('.table').DataTable();
+        });
+    </script>
+}
+
+<link href="~/Content/DataTables/css/dataTables.bootstrap.min.css"
+      rel="stylesheet" />
+
 

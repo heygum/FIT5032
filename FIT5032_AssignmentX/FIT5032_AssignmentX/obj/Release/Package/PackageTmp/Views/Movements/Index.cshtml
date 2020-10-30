@@ -1,0 +1,54 @@
+﻿
+
+@model PagedList.IPagedList<FIT5032_AssignmentX.Models.Movements>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+@{
+    ViewBag.Title = "Movements";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Movements</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+@using (Html.BeginForm("Index", "Movements", FormMethod.Get))
+{
+    <p>
+        Find by name: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+        <input type="submit" class="btn btn-primary" value="Search" />
+    </p>
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.ActionLink("Movement Name", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MovementName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.MovementId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.MovementId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.MovementId })
+            </td>
+        </tr>
+    }
+
+</table>
+
+<br />
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))

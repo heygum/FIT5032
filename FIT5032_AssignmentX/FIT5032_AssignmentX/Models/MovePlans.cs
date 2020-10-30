@@ -19,7 +19,7 @@ namespace FIT5032_AssignmentX.Models
         public string MoveName { get; set; }
         public short Time { get; set; }
         public short Round { get; set; }
-        [DisplayFormat(DataFormatString = "{0:dd/MMMM/yyyy}")]
+        [DisplayFormat(DataFormatString = "{0:dd/MMMM/yyyy hh:mm:ss tt}")]
         public System.DateTime Date { get; set; }
         public string UserID { get; set; }
     }

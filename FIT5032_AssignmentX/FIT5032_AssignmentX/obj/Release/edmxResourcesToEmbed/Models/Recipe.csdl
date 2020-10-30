@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Recipe" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+  <EntityContainer Name="RecipeContainer" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Recipes" EntityType="Recipe.Recipes" />
+    <EntitySet Name="RecipePlans" EntityType="Recipe.RecipePlans" />
+  </EntityContainer>
+  <EntityType Name="Recipes">
+    <Key>
+      <PropertyRef Name="RecipeID" />
+    </Key>
+    <Property Name="RecipeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RecipeName" Type="String" Nullable="false" />
+    <Property Name="Calorie" Type="Double" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RecipePlans">
+    <Key>
+      <PropertyRef Name="PlanID" />
+    </Key>
+    <Property Name="PlanID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ReciName" Type="String" Nullable="false" />
+    <Property Name="Calorie" Type="Double" Nullable="false" />
+    <Property Name="Quantity" Type="Int16" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Nullable="false" />
+    <Property Name="UserID" Type="String" Nullable="false" />
+  </EntityType>
+</Schema>

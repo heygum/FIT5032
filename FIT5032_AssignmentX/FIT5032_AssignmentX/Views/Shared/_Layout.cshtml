@@ -46,8 +46,9 @@
                     @if (User.IsInRole("admin"))
                     {
                         <li>@Html.ActionLink("Manage", "Manage", "Home")</li>
+
+                        <li>@Html.ActionLink("Writing", "Index", "Comments")</li>
                     }
-                    <li>@Html.ActionLink("Artical", "Index", "Comments")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

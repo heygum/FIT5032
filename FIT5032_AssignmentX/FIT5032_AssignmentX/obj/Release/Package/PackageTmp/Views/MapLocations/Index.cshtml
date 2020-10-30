@@ -1,0 +1,74 @@
+﻿@model IEnumerable<FIT5032_AssignmentX.Models.MapLocation>
+
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.0/mapbox-gl-directions.js"></script>
+<link rel="stylesheet"
+      href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.0/mapbox-gl-directions.css"
+      type="text/css" />
+
+<h2>Map</h2>
+@if (User.IsInRole("admin"))
+{
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+}
+
+<div class="col-md-6">
+
+    <div id='map' style='width: 1000px; height: 500px;'></div>
+
+</div>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.LocationName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.longitude)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Latitude)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr class="coordinates">
+            <td class="name">
+                @Html.DisplayFor(modelItem => item.LocationName)
+            </td>
+            <td class="longitude">
+                @Html.DisplayFor(modelItem => item.longitude)
+            </td>
+            <td class="latitude">
+                @Html.DisplayFor(modelItem => item.Latitude)
+            </td>
+
+            <td class="description">
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            @if (User.IsInRole("admin"))
+            {
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.LocationId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.LocationId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.LocationId })
+                </td>
+            }
+        </tr>
+    }
+
+</table>
+@section Scripts {
+    @Scripts.Render("~/bundles/map")
+}

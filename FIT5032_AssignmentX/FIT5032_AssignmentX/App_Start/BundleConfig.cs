@@ -34,6 +34,13 @@ namespace FIT5032_AssignmentX
             bundles.Add(new StyleBundle("~/bundles/map").Include(
                       "~/Scripts/location.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/fullcalendar").Include(
+                     "~/Scripts/lib/jquery.min.js",
+                     "~/Scripts/lib/moment.min.js",
+                     "~/Scripts/fullcalendar.js",
+                     "~/Scripts/calendar.js"
+ ));
+
         }
     }
 }
