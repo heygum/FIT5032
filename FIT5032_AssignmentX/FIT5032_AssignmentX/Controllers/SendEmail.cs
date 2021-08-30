@@ -20,18 +20,18 @@ namespace FIT5032_AssignmentX.Controllers
     [ValidateInput(false)]
     public class SendEmail
     {
-        private const String API_KEY = "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";
+        private const String API_KEY = " In put your own key";
 
         public void Send()
         {
             var client = new SendGridClient(API_KEY);
-            var from = new EmailAddress("heygum97@gmail.com", "CEO");
-            var to = new EmailAddress("kxuu0025@student.monash.edu", "Boxer");
+            var from = new EmailAddress("your@email.com", "CEO");
+            var to = new EmailAddress("Your_sencond_email@email.com", "Boxer");
             var subject = "Report of your movePlans";
             var plainTextContent = "..";
             var htmlContent = "<p>" + "Hello, User." + "</p>";
             var msg = MailHelper.CreateSingleEmail(from, to, subject, plainTextContent, htmlContent);
-            var bytes = File.ReadAllBytes("C:\\Users\\CJ\\Source\\Repos\\FIT5032_AssignmentX\\FIT5032_AssignmentX\\img\\small1.jpg");
+            var bytes = File.ReadAllBytes("Your file");
             var file = Convert.ToBase64String(bytes);
             msg.AddAttachment("small1.jpg", file);
             var response = client.SendEmailAsync(msg);
@@ -40,7 +40,7 @@ namespace FIT5032_AssignmentX.Controllers
         public void Send(string content, string email)
         {
             var client = new SendGridClient(API_KEY);
-            var from = new EmailAddress("heygum97@gmail.com", "CEO");
+            var from = new EmailAddress("your@email.com", "CEO");
             var to = new EmailAddress(email, "Boxer");
             var subject = "Send from living as a Boxer";
             var plainTextContent = "..";
@@ -53,7 +53,7 @@ namespace FIT5032_AssignmentX.Controllers
         {
             var code = Path.Combine(path, name);
             var client = new SendGridClient(API_KEY);
-            var from = new EmailAddress("heygum97@gmail.com", "CEO");
+            var from = new EmailAddress("Youremail@mail.com", "CEO");
             var to = new EmailAddress(email, "Boxer");
             var subject = "Report of your movePlans";
             var plainTextContent = "..";
@@ -68,7 +68,7 @@ namespace FIT5032_AssignmentX.Controllers
         public void SendBulk(string content, List<string> email)
         {
             var client = new SendGridClient(API_KEY);
-            var from = new EmailAddress("heygum97@gmail.com", "CEO");
+            var from = new EmailAddress("Your_email@email.com", "CEO");
             var to_addr = new List<EmailAddress>();
             foreach (var e in email)
             {
@@ -77,7 +77,7 @@ namespace FIT5032_AssignmentX.Controllers
             var subject = "Sent from Living as a Boxer";
             var plainTextContent = "..";
             var htmlContent = content;
-            var bytes = File.ReadAllBytes("C:\\Users\\CJ\\Source\\Repos\\FIT5032_AssignmentX\\FIT5032_AssignmentX\\img\\small1.jpg");
+            var bytes = File.ReadAllBytes("Your photo");
             var file = Convert.ToBase64String(bytes);   
             var msg = MailHelper.CreateSingleEmailToMultipleRecipients(from, to_addr, subject, plainTextContent, htmlContent);
             msg.AddAttachment("Hello.jpg", file);
